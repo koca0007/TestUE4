@@ -71,7 +71,7 @@ ATestUE4Character::ATestUE4Character()
 	VR_Gun = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("VR_Gun"));
 	VR_Gun->SetOnlyOwnerSee(true);			// only the owning player will see this mesh
 	VR_Gun->bCastDynamicShadow = false;
-	VR_Gun->SetupAttachment(R_MotionController);
+	VR_Gun->CastShadow = true;	VR_Gun->SetupAttachment(R_MotionController);
 	VR_Gun->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
 
 	VR_MuzzleLocation = CreateDefaultSubobject<USceneComponent>(TEXT("VR_MuzzleLocation"));
@@ -143,6 +143,7 @@ void ATestUE4Character::OnFire()
 			if (bUsingMotionControllers)
 			{
 				const FRotator SpawnRotation = VR_MuzzleLocation->GetComponentRotation();
+				FVector test = GetActorLocation();
 				const FVector SpawnLocation = VR_MuzzleLocation->GetComponentLocation();
 				World->SpawnActor<ATestUE4Projectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 			}
