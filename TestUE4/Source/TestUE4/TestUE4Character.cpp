@@ -91,6 +91,13 @@ void ATestUE4Character::BeginPlay()
 
 	//Attach gun mesh component to Skeleton, doing it here because the skeleton is not yet created in the constructor
 	FP_Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
+
+	// Show or hide the two versions of the gun based on whether or not we're using motion controllers.
+	if (bUsingMotionControllers)
+	{
+		VR_Gun->SetHiddenInGame(true, false);
+		Mesh1P->SetHiddenInGame(true, true);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -153,23 +160,6 @@ void ATestUE4Character::OnFire()
 				// spawn the projectile at the muzzle
 				World->SpawnActor<ATestUE4Projectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
 			}
-		}
-	}
-
-	// try and play the sound if specified
-	if (FireSound != NULL)
-	{
-		UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-	}
-
-	// try and play a firing animation if specified
-	if (FireAnimation != NULL)
-	{
-		// Get the animation object for the arms mesh
-		UAnimInstance* AnimInstance = Mesh1P->GetAnimInstance();
-		if (AnimInstance != NULL)
-		{
-			AnimInstance->Montage_Play(FireAnimation, 1.f);
 		}
 	}
 }
