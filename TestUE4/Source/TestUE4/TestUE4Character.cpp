@@ -95,13 +95,13 @@ void ATestUE4Character::BeginPlay()
 	// Show or hide the two versions of the gun based on whether or not we're using motion controllers.
 	if (bUsingMotionControllers)
 	{
-		VR_Gun->SetHiddenInGame(false, true);
+		VR_Gun->SetHiddenInGame(true, false);
 		Mesh1P->SetHiddenInGame(true, true);
 	}
 	else
 	{
-		VR_Gun->SetHiddenInGame(true, true);
-		Mesh1P->SetHiddenInGame(false, true);
+		VR_Gun->SetHiddenInGame(fakse, true);
+		Mesh1P->SetHiddenInGame(false, false);
 	}
 }
 
