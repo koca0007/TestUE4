@@ -71,7 +71,6 @@ ATestUE4Character::ATestUE4Character()
 	VR_Gun = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("VR_Gun"));
 	VR_Gun->SetOnlyOwnerSee(true);			// only the owning player will see this mesh
 	VR_Gun->bCastDynamicShadow = false;
-	VR_Gun->CastShadow = false;
 	VR_Gun->SetupAttachment(R_MotionController);
 	VR_Gun->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
 
