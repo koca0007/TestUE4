@@ -150,6 +150,7 @@ void ATestUE4Character::OnFire()
 			else
 			{
 				const FRotator SpawnRotation = GetControlRotation();
+				const FRotator Rotation = GetActorRotation();
 				// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
 				const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 
@@ -174,10 +175,6 @@ void ATestUE4Character::BeginTouch(const ETouchIndex::Type FingerIndex, const FV
 	if (TouchItem.bIsPressed == true)
 	{
 		return;
-	}
-	if ((FingerIndex == TouchItem.FingerIndex) && (TouchItem.bMoved == false))
-	{
-		OnFire();
 	}
 	TouchItem.bIsPressed = true;
 	TouchItem.FingerIndex = FingerIndex;
