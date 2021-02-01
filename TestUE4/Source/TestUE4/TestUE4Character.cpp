@@ -98,11 +98,6 @@ void ATestUE4Character::BeginPlay()
 		VR_Gun->SetHiddenInGame(true, false);
 		Mesh1P->SetHiddenInGame(true, true);
 	}
-	else
-	{
-		VR_Gun->SetHiddenInGame(fakse, true);
-		Mesh1P->SetHiddenInGame(false, false);
-	}
 }
 
 //////////////////////////////////////////////////////////////////////////
