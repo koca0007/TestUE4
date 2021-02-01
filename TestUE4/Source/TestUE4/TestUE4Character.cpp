@@ -144,6 +144,7 @@ void ATestUE4Character::OnFire()
 			if (bUsingMotionControllers)
 			{
 				const FRotator SpawnRotation = VR_MuzzleLocation->GetComponentRotation();
+				FVector test = GetActorLocation();
 				const FVector SpawnLocation = VR_MuzzleLocation->GetComponentLocation();
 				World->SpawnActor<ATestUE4Projectile>(ProjectileClass, SpawnLocation, SpawnRotation);
 			}
